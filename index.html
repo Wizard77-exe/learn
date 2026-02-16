@@ -82,13 +82,47 @@
             background: #21262d;
             padding: 10px;
             display: flex;
+            justify-content: space-between;
+        }
+
+        .left {
+            display: flex;
+            align-items: center;
             gap: 8px;
+        }
+
+        .right {
+            display: flex;
+            justify-content: center;
+            align-items: center;
         }
 
         .dot {
             width: 12px;
             height: 12px;
             border-radius: 50%;
+        }
+
+        .xBtn {
+            /*
+            width: 15px;
+            height: 15px;
+            */
+            text-align: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: transparent;
+            border: none;
+            border-radius: 5px;
+            color: var(--neon-primary);
+            font-size: 1rem;
+            font-weight: bold;
+        }
+
+        .xBtn:hover {
+            background: #ff5f56;
+            color: black;
         }
 
         .red {
@@ -155,9 +189,14 @@
 <body>
     <div class="terminal">
         <div class="terminal-header">
-            <span class="dot red"></span>
-            <span class="dot yellow"></span>
-            <span class="dot green"></span>
+            <div class="left">
+                <span class="dot red"></span>
+                <span class="dot yellow"></span>
+                <span class="dot green"></span>
+            </div>
+            <div class="right">
+                <button class="xBtn">x</button>
+            </div>
         </div>
 
         <div class="terminal-body">
@@ -165,11 +204,12 @@
                     class="cursor"></span></p>
         </div>
     </div>
-
     <script>
-        setTimeout(() => {
+        const btn = document.querySelector(".xBtn");
+
+        btn.addEventListener("click", () => {
             window.location.href = 'dashboard.html';
-        }, 3000);
+        });
     </script>
 </body>
 

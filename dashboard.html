@@ -8,310 +8,88 @@
     <link
         href="https://fonts.googleapis.com/css2?family=Fira+Code&family=Audiowide&family=Orbitron:wght@500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap"
         rel="stylesheet">
-    <style>
-        :root {
-            --bg-main: #0d1117;
-            --bg-secondary: #161b22;
-            --neon-primary: #00ff9c;
-            --neon-accent: #00c97f;
-            --text-main: #e6edf3;
-            --text-muted: #8b949e;
-            --border-color: #30363d;
-        }
-
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-        }
-
-        body {
-            font-family: 'Space Grotesk', sans-serif;
-            background: var(--bg-main);
-            color: var(--text-main);
-            overflow: hidden;
-        }
-
-        /* Moving Grid Background */
-        body::before {
-            content: "";
-            position: fixed;
-            inset: 0;
-            background-image:
-                linear-gradient(rgba(0, 255, 156, 0.08) 1px, transparent 1px),
-                linear-gradient(90deg, rgba(0, 255, 156, 0.08) 1px, transparent 1px);
-            background-size: 50px 50px;
-            animation: moveGrid 10s linear infinite;
-            z-index: -1;
-        }
-
-        @keyframes moveGrid {
-            from {
-                background-position: 0 0;
-            }
-
-            to {
-                background-position: 0 50px;
-            }
-        }
-
-        /* Layout */
-        .dashboard {
-            display: grid;
-            grid-template-rows: 50px 60px 1fr;
-            grid-template-columns: 250px 1fr;
-            grid-template-areas:
-                "brand brand"
-                "topbar topbar"
-                "sidebar main";
-            height: 100vh;
-        }
-
-        /* Brand Bar */
-        .brand-bar {
-            grid-area: brand;
-            display: flex;
-            align-items: center;
-            padding: 0 20px;
-            background: var(--bg-secondary);
-            border-bottom: 1px solid var(--border-color);
-            font-family: 'Audiowide', cursive;
-        }
-
-        .site-icon {
-            width: 32px;
-            height: 32px;
-            margin-right: 12px;
-        }
-
-        .site-title {
-            font-size: 18px;
-            color: var(--neon-primary);
-            text-shadow: 0 0 8px var(--neon-primary);
-            font-weight: bold;
-        }
-
-        /* Adjust Topbar */
-        .topbar {
-            grid-area: topbar;
-            display: flex;
-            overflow-x: auto;
-            white-space: nowrap;
-            align-items: center;
-            padding: 0 10px;
-            border-bottom: 1px solid var(--border-color);
-        }
-
-        /* Scrollbar styling stays the same */
-        .topbar::-webkit-scrollbar {
-            height: 4px;
-        }
-
-        .topbar::-webkit-scrollbar-thumb {
-            background: var(--neon-primary);
-            border-radius: 10px;
-        }
-
-
-        .topbar {
-            grid-area: topbar;
-            background: var(--bg-secondary);
-            display: flex;
-            overflow-x: auto;
-            white-space: nowrap;
-            padding: 0 10px;
-            align-items: center;
-            border-bottom: 1px solid var(--border-color);
-        }
-
-        .topbar::-webkit-scrollbar {
-            height: 4px;
-        }
-
-        .topbar::-webkit-scrollbar-thumb {
-            background: var(--neon-primary);
-            border-radius: 10px;
-        }
-
-        .topbar button {
-            background: none;
-            border: 1px solid var(--neon-primary);
-            color: var(--neon-primary);
-            padding: 6px 12px;
-            margin-right: 8px;
-            border-radius: 4px;
-            cursor: pointer;
-            transition: 0.2s;
-        }
-
-        .topbar button:hover {
-            background: var(--neon-primary);
-            color: #000;
-            box-shadow: 0 0 10px var(--neon-primary);
-        }
-
-        .sidebar {
-            grid-area: sidebar;
-            background: var(--bg-secondary);
-            overflow-y: auto;
-            border-right: 1px solid var(--border-color);
-            padding: 10px;
-        }
-
-        .sidebar::-webkit-scrollbar {
-            width: 4px;
-        }
-
-        .sidebar::-webkit-scrollbar-thumb {
-            background: var(--neon-primary);
-            border-radius: 10px;
-        }
-
-        .sidebar button {
-            display: block;
-            width: 100%;
-            background: none;
-            border: 1px solid var(--neon-primary);
-            color: var(--neon-primary);
-            padding: 6px 12px;
-            margin-bottom: 6px;
-            border-radius: 4px;
-            cursor: pointer;
-            text-align: left;
-            transition: 0.2s;
-        }
-
-        .sidebar button:hover {
-            background: var(--neon-primary);
-            color: #000;
-            box-shadow: 0 0 10px var(--neon-primary);
-        }
-
-        .main {
-            grid-area: main;
-            background: var(--bg-main);
-            padding: 20px;
-            overflow-y: auto;
-        }
-
-        .main::-webkit-scrollbar {
-            width: 6px;
-        }
-
-        .main::-webkit-scrollbar-thumb {
-            background: var(--neon-primary);
-            border-radius: 10px;
-        }
-
-        .card {
-            background: var(--bg-secondary);
-            border: 1px solid var(--border-color);
-            padding: 20px;
-            border-radius: 8px;
-            margin-bottom: 20px;
-            box-shadow: 0 0 10px rgba(0, 255, 156, 0.2);
-            color: var(--text-main);
-        }
-    </style>
+    <link rel="stylesheet" href="assets/styles/dashboard_style.css">
 </head>
 
 <body>
     <div class="dashboard">
         <div class="brand-bar">
-            <img src="icon.png" alt="Site Icon" class="site-icon">
+            <img src="assets/images/coding_16682640.png" alt="Site Icon" class="site-icon">
             <span class="site-title">Cyber OS Dashboard</span>
         </div>
         <div class="topbar">
             <!-- 30 buttons example -->
-            <button>App 1</button>
-            <button>App 2</button>
-            <button>App 3</button>
-            <button>App 4</button>
-            <button>App 5</button>
-            <button>App 6</button>
-            <button>App 7</button>
-            <button>App 8</button>
-            <button>App 9</button>
-            <button>App 10</button>
-            <button>App 11</button>
-            <button>App 12</button>
-            <button>App 13</button>
-            <button>App 14</button>
-            <button>App 15</button>
-            <button>App 16</button>
-            <button>App 17</button>
-            <button>App 18</button>
-            <button>App 19</button>
-            <button>App 20</button>
-            <button>App 21</button>
-            <button>App 22</button>
-            <button>App 23</button>
-            <button>App 24</button>
-            <button>App 25</button>
-            <button>App 26</button>
-            <button>App 27</button>
-            <button>App 28</button>
-            <button>App 29</button>
-            <button>App 30</button>
+            <button>Computer Programming</button>
+            <button>Information Technology Fundamentals</button>
+            <button>Web System and Technologies</button>
+            <button>Introduction to Computing</button>
+            <button>Data Structures and Algorithm</button>
+            <button>Fundamentals of Information Management</button>
+            <button>Fundamentals of Database Systems</button>
+            <button>Platform Technologies</button>
+            <button>Object-Oriented Programming</button>
+            <button>Integrative Programming and Technologies</button>
+            <button>Event Driven Programming</button>
+            <button>Advance Database Systems</button>
+            <button>Networking</button>
+            <button>Systems Integration and Architecture</button>
+            <button>Applications Development and Emerging Technologies</button>
+            <button>Enterprise Data Management</button>
+            <button>Analytics Technique and Tools</button>
+            <button>Data Mining</button>
+            <button>System Administration and Maintenance</button>
+            <button>Mathematics in the Modern World</button>
+            <button>Discrete Mathematics</button>
+            <button>Science, Technology, and Society</button>
+            <button>Information Assurance and Security</button>
+            <button>Fundamentals of Business Analytics</button>
+            <button>Human Computer Interaction</button>
+            <button>Analytics Modeling</button>
+            <button>Capstone Project and Research</button>
+            <button>Structured Query Language</button>
+            <button>PHP: Hypertext Preprocessor</button>
+            <button>Java</button>
+            <button>JavaScript</button>
+            <button>Cascading Style Sheet</button>
+            <button>HyperText Markup Language</button>
+            <button>C++</button>
+            <button>C Language</button>
+            <button>Python</button>
         </div>
         <div class="sidebar">
             <!-- 30 vertical buttons -->
-            <button>Tool 1</button>
-            <button>Tool 2</button>
-            <button>Tool 3</button>
-            <button>Tool 4</button>
-            <button>Tool 5</button>
-            <button>Tool 6</button>
-            <button>Tool 7</button>
-            <button>Tool 8</button>
-            <button>Tool 9</button>
-            <button>Tool 10</button>
-            <button>Tool 11</button>
-            <button>Tool 12</button>
-            <button>Tool 13</button>
-            <button>Tool 14</button>
-            <button>Tool 15</button>
-            <button>Tool 16</button>
-            <button>Tool 17</button>
-            <button>Tool 18</button>
-            <button>Tool 19</button>
-            <button>Tool 20</button>
-            <button>Tool 21</button>
-            <button>Tool 22</button>
-            <button>Tool 23</button>
-            <button>Tool 24</button>
-            <button>Tool 25</button>
-            <button>Tool 26</button>
-            <button>Tool 27</button>
-            <button>Tool 28</button>
-            <button>Tool 29</button>
-            <button>Tool 30</button>
+            <button>Button N</button>
+            <button>Button N</button>
+            <button>Button N</button>
+            <button>Button N</button>
+            <button>Button N</button>
+            <button>Button N</button>
+            <button>Button N</button>
+            <button>Button N</button>
+            <button>Button N</button>
+            <button>Button N</button>
+            <button>Button N</button>
+            <button>Button N</button>
+            <button>Button N</button>
+            <button>Button N</button>
+            <button>Button N</button>
+            <button>Button N</button>
+            <button>Button N</button>
+            <button>Button N</button>
+            <button>Button N</button>
+            <button>Button N</button>
+            <button>Button N</button>
+            <button>Button N</button>
+            <button>Button N</button>
+            <button>Button N</button>
+            <button>Button N</button>
+            <button>Button N</button>
+            <button>Button N</button>
+            <button>Button N</button>
+            <button>Button N</button>
+            <button>Button N</button>
         </div>
         <div class="main">
-            <div class="card">Dashboard Widget 1</div>
-            <div class="card">Dashboard Widget 2</div>
-            <div class="card">Dashboard Widget 3</div>
-            <div class="card">Dashboard Widget 4</div>
-            <div class="card">Dashboard Widget 1</div>
-            <div class="card">Dashboard Widget 2</div>
-            <div class="card">Dashboard Widget 3</div>
-            <div class="card">Dashboard Widget 4</div>
-            <div class="card">Dashboard Widget 1</div>
-            <div class="card">Dashboard Widget 2</div>
-            <div class="card">Dashboard Widget 3</div>
-            <div class="card">Dashboard Widget 4</div>
-            <div class="card">Dashboard Widget 1</div>
-            <div class="card">Dashboard Widget 2</div>
-            <div class="card">Dashboard Widget 3</div>
-            <div class="card">Dashboard Widget 4</div>
-            <div class="card">Dashboard Widget 1</div>
-            <div class="card">Dashboard Widget 2</div>
-            <div class="card">Dashboard Widget 3</div>
-            <div class="card">Dashboard Widget 4</div>
-            <div class="card">Dashboard Widget 1</div>
-            <div class="card">Dashboard Widget 2</div>
-            <div class="card">Dashboard Widget 3</div>
-            <div class="card">Dashboard Widget 4</div>
         </div>
     </div>
 </body>

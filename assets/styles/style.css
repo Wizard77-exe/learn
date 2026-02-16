@@ -1,3 +1,10 @@
+:root {
+    --primary-color: black;
+    --secondary-color: black;
+    --tertiary-color: black;
+    --link-color: black;
+    --highlighted-color: black;
+}
 * {
     box-sizing: border-box;
     margin: 0;

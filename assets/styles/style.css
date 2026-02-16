@@ -1,10 +1,23 @@
 :root {
-    --primary-color: black;
-    --secondary-color: black;
-    --tertiary-color: black;
-    --link-color: black;
-    --highlighted-color: black;
+    --bg-main: #0d1117;                     /* Deep dark background */
+    --bg-secondary: #161b22;                /* Cards, navbars */
+    --border-color: #30363d;                /* Subtle borders */
+
+    --neon-primary: #00ff9c;                /* Main neon green */
+    --neon-accent: #00c97f;                 /* Softer green hover */
+    --neon-glow: rgba(0, 255, 156, 0.6);
+
+    --text-main: #e6edf3;                   /* Main readable text */
+    --text-muted: #8b949e;                  /* Secondary text */
+
+
+
+    --header-font: 'Audiowide', sans-serif;
+    --subheader-font: 'Orbitron', sans-serif;
+    --body-font: 'Space Grotesk', sans-serif;
+    --code-sections: 'Fira Code', monospace;
 }
+
 * {
     box-sizing: border-box;
     margin: 0;
@@ -12,6 +25,11 @@
 }
 
 body {
-    background: rgb(36, 36, 36);
+    background: var(--bg-main);
     height: 100vh;
+}
+
+h1 {
+    font-family: var(--header-font);
+    color: var(--secondary-color);
 }
